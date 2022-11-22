@@ -1,7 +1,7 @@
 package Filas;
 import java.util.Random;
 public class Funciones {
-    Random r = new Random(17504942); //variable que nos ayudará con los RNG
+    Random r = new Random(17503551); //variable que nos ayudará con los RNG
     //tabla Z, sirve de apoyo para  la distribución normal
     static double[] tableZ ={
           /* .00    .01    .02    .03    .04    .05    .06    .07    .08    .09*/
