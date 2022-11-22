@@ -1,8 +1,10 @@
 package Filas;
 import java.util.Random;
 public class Funciones {
-    Random r = new Random(17504942);
+    Random r = new Random(17504942); //variable que nos ayudará con los RNG
+    //tabla Z, sirve de apoyo para  la distribución normal
     static double[] tableZ ={
+          /* .00    .01    .02    .03    .04    .05    .06    .07    .08    .09*/
     /*0.0*/.5000, .5040, .5080, .5120, .5160, .5199, .5239, .5279, .5319, .5359,
     /*0.1*/.5398, .5438, .5478, .5517, .5557, .5596, .5636, .5675, .5714, .5753,
     /*0.2*/.5793, .5832, .5871, .5910, .5948, .5987, .6026, .6064, .6103, .6141,
@@ -39,6 +41,12 @@ public class Funciones {
     /*3.3*/.9995, .9995, .9995, .9996, .9996, .9996, .9996, .9996, .9996, .9997,
     /*3.4*/.9997, .9997, .9997, .9997, .9997, .9997, .9997, .9997, .9997, .9998};
     
+    /**
+     * Cálculo de un número aleatorio que sigue una distribución normal
+     * @param miu la media de nuestra distribución normal
+     * @param sigma2 la varianza de nuestra distribución normal
+     * @return un número aleatorio
+     */
     public int Z(double miu, double sigma2){
         double por = r.nextDouble();
         double z;
@@ -52,7 +60,11 @@ public class Funciones {
         double x=miu+sigma2*z;
         return (int)(Math.round(x*10000d)/10000d);
     }
-    
+     /**
+      * Busca el valor z en la tabla por su porcentaje
+      * @param por el porcentaje que buscamos
+      * @return el valor z
+      */
     private double busqueda(double por){
         for (int i = 0; i < tableZ.length; i++) {
             if(tableZ[i]>=por){
@@ -61,7 +73,12 @@ public class Funciones {
         }
         return -1;
     }
-    
+     /**
+      * Cálcula aleatoriamente si un cliente saldrá siguiendo una distribución exponencial
+      * @param lambda la inversa del valor medio
+      * @param n el número de clientes en una fila (Entre mas clientes haya, mas probabilidad hay de que salga)
+      * @return un valor booleando aleatorio
+      */
     public boolean Salir(double lambda, int n){
         double prob = Exponencial(lambda, n);
         double x = r.nextDouble();
@@ -71,6 +88,12 @@ public class Funciones {
         return true;
     }
     
+    /**
+     * Cálculo de una probabilidad de un valor x en la distribución exponencial
+     * @param lambda la inversa de nuestro valor medio
+     * @param x el valor al que buscamos probabilidad
+     * @return la probabilidad de x
+     */
     private double Exponencial(double lambda, int x){
         double prob = 1-Math.exp(-lambda*x);
         return Math.round(prob*10000d)/10000d;
