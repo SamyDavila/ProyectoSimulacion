@@ -1,27 +1,35 @@
 package Filas;
 
 public class Cliente {
-    private static Funciones f = new Funciones();
-    //Variables
-    
+    public static Funciones f = new Funciones();
     //datos
-    int num;
-    int aLlegada;
-    int eLlegadaFila;
-    int aUso;
-    int eEntradaProbador;
-    int eSalidaProbador;
-    boolean eSalidaFila;
-    int sFila;
-    int[] sSalidaProbadores;
+    int num; //Número de cliente
+    int aLlegada; //(Actividad) Tiempo entre llegada
+    int eLlegadaFila; //(Evento) Tiempo en que llega a la fila
+    int aUso; //(Actividad) Tiempo de uso
+    int eEntradaProbador; //(Evento) Tiempo en que entra al probador
+    int eSalidaProbador; //(Evento) Tiempo en que sale del probador
+    boolean eSalidaFila; //(Evento) Salida de la fila
+    int sFila; //(Salida) Tiempo en la fila
+    int[] sSalidaProbadores; //(Salida) Tiempo en que se desocupa cada probador
     
+    /**
+     * Constructor de los clientes
+     * @param num El número de cliente que tendrá
+     * @param nFila El número de clientes que hay en la fila en el momento en que llegó éste
+     */
     public Cliente(int num, int nFila){
         this.num = num;
         aLlegada = f.Z(7, 3);
         aUso = f.Z(15, 4);
         eSalidaFila = f.Salir(0.3, nFila);
     }
-
+    
+    /**
+     * Realiza todas las operaciones para calcular sus datos
+     * @param LlegadaAnterior El tiempo en que llegó el cliente anterior a la fila
+     * @param SalidasAnterior El timepo en que se desocupa cada probador
+     */
     public void Todo(int LlegadaAnterior, int[] SalidasAnterior){
         LlegadaFila(LlegadaAnterior);
         Entrada(SalidasAnterior);
@@ -30,11 +38,19 @@ public class Cliente {
         TiempoFila();
     }
     
-    private void LlegadaFila(int LlegadaAnterior){
+    /**
+     * Cálculo de el tiempo en que llegará a la fila
+     * @param LlegadaAnterior El tiempo en que llegó el cliente anterior a la fila
+     */
+    public void LlegadaFila(int LlegadaAnterior){
         eLlegadaFila = LlegadaAnterior + aLlegada;
     }
     
-    private void Entrada(int[] SalidasAnterior){
+    /**
+     * Cálculo de el tiempo en que entrará a un probador
+     * @param SalidasAnterior El tiempo en que se desocupan los probadores
+     */
+    public void Entrada(int[] SalidasAnterior){
         if(eSalidaFila){
             eEntradaProbador = -1;
         }
@@ -49,6 +65,11 @@ public class Cliente {
         }
     }
     
+    /**
+     * Cálculo del menor tiempo entre los tiempos de desocupo de los probadores
+     * @param Array los tiempos en que se desocupan los probadores
+     * @return el menor valor de este arreglo
+     */
     public int menor(int[] Array){
         int menor = Array[0];
         int index = 0;
@@ -61,7 +82,10 @@ public class Cliente {
         return index;
     }
     
-    private void Salida(){
+    /**
+     * Cálculo del tiempo en que sale el cliente del probador
+     */
+    public void Salida(){
         if(eSalidaFila){
             eSalidaProbador = -1;
         }
@@ -70,7 +94,11 @@ public class Cliente {
         }
     }
     
-    private void salidas(int[] SalidasAnterior){
+    /**
+     * Actualización de los tiempos de desocupo de los probadores
+     * @param SalidasAnterior El tiempo en que se desocupan los probadores
+     */
+    public void salidas(int[] SalidasAnterior){
         if(eSalidaFila){
             sSalidaProbadores = SalidasAnterior;
         }
@@ -81,7 +109,10 @@ public class Cliente {
         }
     }
     
-    private void TiempoFila(){
+    /**
+     * Cálculo del tiempo que estuvo en la fila
+     */
+    public void TiempoFila(){
         if(eSalidaFila){
             sFila = 0;
         }
