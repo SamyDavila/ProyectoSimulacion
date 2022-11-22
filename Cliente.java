@@ -1,7 +1,6 @@
 package Filas;
 
 public class Cliente {
-    public static Funciones f = new Funciones();
     //datos
     int num; //Número de cliente
     int aLlegada; //(Actividad) Tiempo entre llegada
