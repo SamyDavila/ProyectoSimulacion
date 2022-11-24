@@ -20,57 +20,57 @@ Estados: número de clientes en la fila, número de probadores ocupados.<br/>
   <tr>
     <td>0</td>
     <td>9</td>
-    <td></td>
+    <td>9</td>
     <td>10</td>
-    <td></td>
-    <td></td>
+    <td>9</td>
+    <td>19</td>
     <td>False</td>
-    <td></td>
-    <td></td>
+    <td>0</td>
+    <td>19</td>
   </tr>
   <tr>
     <td>1</td>
     <td>9</td>
-    <td></td>
+    <td>18</td>
     <td>17</td>
-    <td></td>
-    <td></td>
+    <td>19</td>
+    <td>36</td>
     <td>False</td>
-    <td></td>
-    <td></td>
+    <td>1</td>
+    <td>36</td>
   </tr>
   <tr>
     <td>2</td>
     <td>10</td>
-    <td></td>
+    <td>28</td>
     <td>19</td>
-    <td></td>
-    <td></td>
+    <td>36</td>
+    <td>55</td>
     <td>False</td>
-    <td></td>
-    <td></td>
+    <td>8</td>
+    <td>55</td>
   </tr>
   <tr>
     <td>3</td>
     <td>7</td>
-    <td></td>
+    <td>35</td>
     <td>10</td>
-    <td></td>
-    <td></td>
+    <td>55</td>
+    <td>65</td>
     <td>False</td>
-    <td></td>
-    <td></td>
+    <td>20</td>
+    <td>65</td>
   </tr>
   <tr>
     <td>4</td>
     <td>6</td>
-    <td></td>
+    <td>41</td>
     <td>17</td>
-    <td></td>
-    <td></td>
+    <td>-1</td>
+    <td>-1</td>
     <td>True</td>
-    <td></td>
-    <td></td>
+    <td>0</td>
+    <td>65</td>
   </tr>
 </table>
 <br/>
