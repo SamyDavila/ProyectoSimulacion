@@ -12,6 +12,7 @@ public class Cliente {
     boolean eSalidaFila; //(Evento) Salida de la fila
     int sFila; //(Salida) Tiempo en la fila
     int[] sSalidaProbadores; //(Salida) Tiempo en que se desocupa cada probador
+    int sInactividad;
     
     /**
      * Constructor de los clientes
@@ -36,6 +37,7 @@ public class Cliente {
         Salida();
         salidas(SalidasAnterior);
         TiempoFila();
+        TiempoInactivo(SalidasAnterior);
     }
     
     /**
@@ -118,6 +120,18 @@ public class Cliente {
         }
         else{
             sFila = eEntradaProbador - eLlegadaFila;
+        }
+    }
+    
+    /**
+     * Calcula el tiempo de inactividad de los probadores
+     */
+    public void TiempoInactivo(int[] SalidasAnterior){
+        sInactividad = 0;
+        for (int i = 0; i < sSalidaProbadores.length; i++) {
+            if(SalidasAnterior[i] < eLlegadaFila){
+                sInactividad += eLlegadaFila - SalidasAnterior[i];
+            }
         }
     }
 
