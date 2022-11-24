@@ -77,13 +77,13 @@ Estados: número de clientes en la fila, número de probadores ocupados.<br/>
 Llegada a la fila =<br/>
 •	Llegada del anterior + el tiempo entre llegada de este<br/>
 Entrada al probador = <br/>
-•	Si Salida de la fila = false: -1<br/>
+•	Si Salida de la fila: -1<br/>
 •	Si la salida del probador del cliente anterior es mayor a la llegada a la fila de este cliente: Salida del probador del anterior cliente.<br/>
 •	De lo contrario: Llegada a la fila.<br/>
 Salida del probador = <br/>
-•	Si Salida de la fila: Salida del probador del cliente anterior<br/>
+•	Si Salida de la fila: -1<br/>
 •	De lo contrario: Entrada al probador + Tiempo de uso<br/>
 Tiempo en fila =<br/>
-•	Si Salida de la fila: -1<br/>
+•	Si Salida de la fila: 0<br/>
 •	De lo contrario: Entrada al probador – Llegada a la fila<br/>
 <br/>
